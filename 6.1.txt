@@ -1,0 +1,79 @@
+6.1: Using SED Commands
+
+
+
+1. Create a file “Employee.dat” with text as follows.
+
+James	76382	PACE	Chennai
+John	34228	GRIT	Hyderabad
+Peter	22321	GE	Bangalore
+Albert	32342	GRIT	Pune
+Mathew	23222	PACE	Mumbai
+Richard	23232	ACS	Pune	
+
+[blr7@NDAUnix ~]$ cat employee.dat
+James |76382 |PACE |chennai
+John  |34228 |GRIT |hyderabad
+Peter |22321 |GE   |bangalore
+Albert|32342 |GRIT |pune
+Mathew|23222 |PACE |mumbai
+Richa |23232 |ACS  |pune
+
+
+a) Write a sed command to print only the lines starting at line 2 and ending with the letters “Pune”
+[blr7@NDAUnix ~]$ sed -n '1d' employee.dat|sed -n  '/pune$/p' employee.dat
+Albert|32342 |GRIT |pune
+Richa |23232 |ACS  |pune
+
+
+b) Write a sed command that will display the top 5 lines from the file
+	[blr7@NDAUnix ~]$ sed 5q employee.dat
+James |76382 |PACE |chennai
+John  |34228 |GRIT |hyderabad
+Peter |22321 |GE   |bangalore
+Albert|32342 |GRIT |pune
+Mathew|23222 |PACE |mumbai
+
+
+c) Write a sed command that will substitute the word “Chennai” for "Pune" used in all instance of the word
+	[blr7@NDAUnix ~]$ sed 's/chennai/Pune/' employee.dat
+	James |76382 |PACE |Pune
+	John  |34228 |GRIT |Hyderabad	
+	Peter |22321 |GE   |bangalore
+	Albert|32342 |GRIT |pune
+	Mathew|23222 |PACE |mumbai
+	Richa |23232 |ACS  |pune
+
+d) Write a sed command that will replace occurrence of the character e with the string UNIX in all lines. (Use –e option)
+	[blr7@NDAUnix ~]$ sed -e 's/e/UNIX/g' employee.dat
+	JamUNIXs |76382 |PACE |chUNIXnnai
+	John  |34228 |GRIT |hydUNIXrabad
+	PUNIXtUNIXr |22321 |GE   |bangalorUNIX
+	AlbUNIXrt|32342 |GRIT |punUNIX
+	MathUNIXw|23222 |PACE |mumbai
+	Richa |23232 |ACS  |punUNIX
+
+e) Write a sed command to delete blank lines
+	[blr7@NDAUnix ~]$  sed '/^$/d' employee.dat
+	James |76382 |PACE |chennai
+	John  |34228 |GRIT |hyderabad
+	Peter |22321 |GE   |bangalore
+	Albert|32342 |GRIT |pune
+	Mathew|23222 |PACE |mumbai
+	Richa |23232 |ACS  |pune
+
+
+f) Write a sed command to delete lines from 3 to 5
+
+	[blr7@NDAUnix ~]$ sed '3,5d' employee.dat
+	James |76382 |PACE |chennai
+	John  |34228 |GRIT |hyderabad
+	Richa |23232 |ACS  |pune
+
+
+ 2: Create a new file “PACE.dat which has only the lines that contain the word  “PACE” from Employee.dat
+
+[blr7@NDAUnix ~]$ sed -n '/PACE/p' employee.dat | cat >PACE.dat
+[blr7@NDAUnix ~]$ cat PACE.dat
+James |76382 |PACE |chennai
+Mathew|23222 |PACE |mumbai
