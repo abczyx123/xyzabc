@@ -1,9 +1,0 @@
-1.1: Connecting to the Unix Server
-Step 1: Enter your login name and password to login to the UNIX system.
-		blr7
-		blr7			
-	
-1.2: Logging out of the system
-Step 1: Type the exit command at $ prompt or else, press ctrl and d together to log out
-  	exit.
-
