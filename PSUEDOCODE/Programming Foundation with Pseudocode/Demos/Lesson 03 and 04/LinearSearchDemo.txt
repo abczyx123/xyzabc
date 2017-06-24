@@ -1,0 +1,38 @@
+/*********************************************************************
+ * File                 : LinearSearchDemo.txt
+ * Author Name          : Capgemini
+ * Desc                 : Program to search an element using linear search algorithm 
+ * Version              : 1.0
+ * Last Modified Date   : 01-May-2016
+ * Change Description   : Description about the changes implemented
+ *********************************************************************/
+BEGIN
+	DECLARE arr[10] AS INETEGER ARRAY AND INITIALISE AS [11,44,22,55,44,22,66,33,88,22]
+	DECLARE index AS INETEGER INITIALIZE AS 0
+	DECLARE sum AS INETEGER INITIALIZE AS 0
+	DECLARE element AS INETEGER
+	PRINT "Enter searching element :"
+	ACCEPT element
+	result = linearSearch(arr,10,element)
+	IF result== -1 THEN
+		PRINT "Element not found"
+	ELSE
+		PRINT "Element found at ", result
+	END IF
+END
+/*********************************************************************
+* Module Name         : linearSearch()
+* Input Parameters    : array,int,int
+* Return Type         : int
+* Author              : Capgemini
+* Creation Date       : 01-May-2016
+* Description         : searching the element by linear search algorithm 
+ *********************************************************************/
+SUB linearSearch(arr,n,ele)
+	FOR index = 0 TO n-1
+		IF ele == arr[index] THEN
+			RETURN index
+		END IF
+	END FOR
+	RETURN -1
+END SUB

@@ -1,0 +1,101 @@
+RECORD Employee
+	DECLARE EmpId as INTEGER
+	DECLARE employmentType AS STRING
+END RECORD
+
+BEGIN
+       		DECLARE emp AS Employee
+		//leaves variable is used to store number of leaves per month
+		DECLARE leaves, TotalLeaves AS INTEGER
+                PROMPT "Enter the EmployeeId" AND STORE IN emp.EmpId
+				if(isValid(emp.EmpId) then
+                PROMPT "Enter the employmentType" AND STORE IN emp.employmentType
+					if(isValidEmployementType(emp.employementType) then
+					if(isValidEmployee(empEmpId) then
+					totalLeaves= calculateTotalLeaves(emp.employmentType)
+						PRINT "Employee Id :" , emp.EmpId
+	                    PRINT "Total Available Leaves are :", TotalLeaves
+					end if
+					end if
+				end if
+				
+				EXCEPTION
+					when InvalidEmployeeId then
+						PRINT "This Employee ID does not exist"
+	
+				
+END
+
+/*********************************************************************
+* Module Name         : isValidEmployee()
+* Input Parameters    : empid
+* Return Type         : BOOLEAN
+* Author              : Capgemini
+* Creation Date       : 26-MAY-2017
+* Description         : To validate Employee id against DB
+*********************************************************************/
+
+SUB isValidEmployee(empid)
+	IF(elementFound(empid) THEN
+		return true
+	ELSE
+		RAISE InvalidEmployeeId('Empid does not exist ')
+		
+END
+
+
+
+/*********************************************************************
+* Module Name         : calculateTotalLeaves()
+* Input Parameters    : employmentType
+* Return Type         : INTEGER
+* Author              : Capgemini
+* Creation Date       : 26-MAY-2017
+* Description         : To calculate total leaves for given employee id
+*********************************************************************/
+
+SUB calculateTotalLeaves ( employmentType)
+DECLARE totalLeaves,leaves 
+			IF(employmentType=='PERMANENT') THEN
+				leaves=2;
+			ELSE IF(employmentType=='CONTRACT') THEN
+				leaves=1;
+			END IF
+			totalLeaves=leaves*12;
+			return totalLeaves;
+END
+/*********************************************************************
+* Module Name         : isValidEmploymentType()
+* Input Parameters    : data
+* Return Type         : BOOLEAN
+* Author              : Capgemini
+* Creation Date       : 26-May-2017
+* Description         : To validate employment type  
+*********************************************************************/
+
+SUB isValidEmploymentType(type)
+	if(type=='PERMANENT' OR type=='CONTRACT')
+	return true
+	else
+	return false
+END
+
+
+
+/*********************************************************************
+* Module Name         : isValid()
+* Input Parameters    : data
+* Return Type         : BOOLEAN
+* Author              : Capgemini
+* Creation Date       : 28-Feb-2015
+* Description         : To validate data for accepting only digits 
+*********************************************************************/
+
+SUB isValid(data)
+	IF(isDigits(data)) THEN
+		RETURN true
+	ELSE	
+		RETURN false
+	END IF
+END SUB
+

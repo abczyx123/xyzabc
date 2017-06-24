@@ -1,0 +1,79 @@
+/*********************************************************************
+ * File                 : DefensiveProgramming.txt
+ * Author Name          : Capgemini
+ * Desc                 : Program to apply discount on productprice
+ * Version              : 1.0
+ * Last Modified Date   : 28-Feb-2015
+ * Change Description   : Description about the changes implemented
+ *********************************************************************/
+ 
+BEGIN
+	DECLARE productId AS INTEGER
+	DECLARE discount AS REAL
+	PROMPT "Enter productId" AND STORE IN productId
+	IF(isValid(productId)) THEN
+		PROMPT "Enter discount" AND STORE IN discount
+		IF(isValid(discount)) THEN
+			applyDiscount(productId,discount);
+		ELSE
+			PRINT"Discount value should contain numbers"
+		END IF
+	ELSE
+		PRINT"Product Id should contain numbers"
+	END IF
+END
+
+/*********************************************************************
+* Module Name         : applyDiscount()
+* Input Parameters    : productId, discount
+* Return Type         : INTEGER
+* Author              : Capgemini
+* Creation Date       : 28-Feb-2015
+* Description         : Applying discount on the product price
+ *********************************************************************/
+
+SUB applyDiscount(productId,discount)
+	DECLARE result AS INTEGER
+	result=getProductPrice(productId)*discount
+	IF(result==-1) THEN
+		PRINT "Product doesn’t exist with this id"+ productId
+	ELSE
+		PRINT "Product Price" + result;
+	END IF
+END SUB
+
+
+/*********************************************************************
+* Module Name         : getProductPrice()
+* Input Parameters    : productId
+* Return Type         : INTEGER
+* Author              : Capgemini
+* Creation Date       : 28-Feb-2015
+* Description         : Based on productId, fetching product price if productId exists, else errorcode -1 will be returned	*********************************************************************/
+
+SUB getProductPrice(productId)
+	DECLARE errorcode AS INTEGER AND STORE 0
+	IF(elementfound(productId)) THEN
+	        RETURN productPrice
+	ELSE
+		errorcode = -1
+	       	RETURN errocode;
+	END IF
+END SUB
+
+/*********************************************************************
+* Module Name         : isValid()
+* Input Parameters    : data
+* Return Type         : BOOLEAN
+* Author              : Capgemini
+* Creation Date       : 28-Feb-2015
+* Description         : To validate data for accepting only digits 
+*********************************************************************/
+
+SUB isValid(data)
+	IF(isDigits(data)) THEN
+		RETURN true
+	ELSE	
+		RETURN false
+	END IF
+END SUB

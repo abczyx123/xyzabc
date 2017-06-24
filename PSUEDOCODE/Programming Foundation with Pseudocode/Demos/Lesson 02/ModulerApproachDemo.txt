@@ -1,0 +1,41 @@
+/*********************************************************************
+ * File                 : ModulerApproachDemo.txt
+ * Author Name          : Capgemini
+ * Desc                 : Program to check whether the number is prime 
+ * Version              : 1.0
+ * Last Modified Date   : 01-May-2016
+ * Change Description   : Description about the changes implemented
+ *********************************************************************/
+BEGIN
+	DECLARE num AS INTEGER
+	ACCEPT num
+	IF num > 2 THEN
+		IF checkPrime(num)THEN
+			PRINT num, " is prime"
+		ELSE
+			PRINT num, " is not prime"
+		END IF
+	ELSE IF num > 1 THEN
+		PRINT num, " is prime"
+	ELSE
+		PRINT num, " is not prime"
+	END IF
+
+END
+/*********************************************************************
+* Module Name         : checkPrime()
+* Input Parameters    : number
+* Return Type         : BOOLEAN
+* Author              : Capgemini
+* Creation Date       : 01-May-2016
+* Description         : Checking for prime number 
+ *********************************************************************/
+SUB checkPrime(number)
+	DECLARE index AS INTEGER
+	FOR index = 2 TO (number/2) 
+		IF number % index == 0 THEN
+			RETURN false
+		END IF
+	END FOR
+	RETURN true
+END SUB

@@ -1,0 +1,91 @@
+/*********************************************************************
+ * File                 : ModulerApproachDemo.txt
+ * Author Name          : Capgemini
+ * Desc                 : Program to sort the element using Bubble sort algorithm 
+ * Version              : 1.0
+ * Last Modified Date   : 01-May-2016
+ * Change Description   : Description about the changes implemented
+ *********************************************************************/
+BEGIN
+	DECLARE arr[10] AS INETEGER ARRAY AND INITIALISE AS [66,46,20,89,44,22,11,33,45,22]
+	DECLARE index AS INETEGER INITIALIZE AS 0
+	bubbleSort(arr,10)
+
+END
+
+/*********************************************************************
+* Module Name         : bubbleSort()
+* Input Parameters    : array
+* Return Type         : void
+* Author              : Capgemini
+* Creation Date       : 01-May-2016
+* Description         : sorting the array by bubble sort algorithm 
+ *********************************************************************/
+SUB bubbleSort(arr,n)
+	FOR index = 0 TO n-1
+		FOR index1 = 0 TO n-1-index
+			IF arr[index1] > arr[index1+1] THEN
+				//swap(arr[index1],arr[index1+1])
+				temp = arr[index1]
+				arr[index1]=arr[index1+1]
+				arr[index1+1] = temp
+			END IF
+	END FOR
+END SUB
+
+Dry run
+---------
+
+66, 46, 20, 89, 44, 22, 11, 33, 45, 22
+Iteration 1
+	1
+	66, 46, 20, 89, 44, 22, 11, 33, 45, 22
+	2
+	46, 66, 20, 89, 44, 22, 11, 33, 45, 22
+	3
+	46, 20, 66, 89, 44, 22, 11, 33, 45, 22
+	4
+	46, 20, 66, 89, 44, 22, 11, 33, 45, 22
+	5
+	46, 20, 66, 44, 89, 22, 11, 33, 45, 22
+	6
+	46, 20, 66, 44, 22, 89, 11, 33, 45, 22
+	7
+	46, 20, 66, 44, 22, 11, 89, 33, 45, 22
+	8
+	46, 20, 66, 44, 22, 11, 33, 89, 45, 22
+	9
+	46, 20, 66, 44, 22, 11, 33, 45, 89, 22
+	10
+	46, 20, 66, 44, 22, 11, 33, 45, 22, 89
+
+Iteration 2
+	1
+	46, 20, 66, 44, 22, 11, 33, 45, 22, 89
+	2
+	20, 46, 66, 44, 22, 11, 33, 45, 22, 89
+	3
+	20, 46, 66, 44, 22, 11, 33, 45, 22, 89
+	4
+	20, 46, 44, 66, 22, 11, 33, 45, 22, 89
+	5
+	20, 46, 44, 22, 66, 11, 33, 45, 22, 89
+	6
+	20, 46, 44, 22, 11, 66, 33, 45, 22, 89
+	7
+	20, 46, 44, 22, 11, 33, 66, 45, 22, 89
+	8
+	20, 46, 44, 22, 11, 33, 45, 66, 22, 89
+	9
+	20, 46, 44, 22, 11, 33, 45, 22, 66, 89
+	
+	. . .
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,41 @@
+/*********************************************************************
+ * File                 			: ProductDiscount.txt
+ * Author Name          : Anjulata
+ * Desc                		: Program to calculate and display the bill based on Discount given
+ * Version              		: 1.0
+ * Last Modified Date   : 23-May-2017
+ * Change Description   : Description about the changes implemented
+ *********************************************************************/
+BEGIN
+	DECLARE PurchaseAmount, DiscountAmount, BillAmount  AS INTEGER
+ 	DECLARE TaxPerc  AS REAL AND STORE .15
+	PROMPT “Enter Purchase amount” AND STORE IN PurchaseAmount
+	DiscountAmount = calculateDiscount(PurchaseAmount)
+	CALCULATE BillAmount = (PurchaseAmount - DiscountAmount) + 	
+												TaxPerc * (PurchaseAmount-DiscountAmount)
+	DISPLAY BillAmount 
+END
+/*********************************************************************
+* Module Name         : calculateDiscount()
+* Input Parameters    : number
+* Return Type         	: NUMBER
+* Author              		: Anjulata
+* Creation Date       	: 23-May-2017
+* Description         		: Calculating the discount for the given purchase amount
+ *********************************************************************/
+SUB calculateDiscount(PurchaseAmount)
+	DECLARE DiscountAmount AS INTEGER AND STORE 0;
+	IF PurchaseAmount < 0 THEN
+			 DISPLAY "Invalid Amount"
+		ELSE IF PurchaseAmount > 5000 THEN
+			DiscountAmount  = .30  *  PurchaseAmount
+		ELSE IF PurchaseAmount > 3000 THEN
+			DiscountAmount  = .20 * PurchaseAmount
+		ELSE IF PurchaseAmount > 1000 THEN
+			DiscountAmount  = .10 * PurchaseAmount
+	END IF
+	RETURN DiscountAmount;
+END
+
+
+
